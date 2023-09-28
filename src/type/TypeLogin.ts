@@ -1,0 +1,35 @@
+export interface ILoginRequest {
+	code: number,
+	token: string,
+	info: IArrayTasks
+}
+interface IArrayTasks {
+	token: string,
+	userid: number,
+	uid: string,
+	username: string,
+	realname: string,
+	is_v: number,
+	ip: string,
+	dest: string,
+	phone: string,
+	is_realname: number,
+	vip_level: number,
+	balance: string,
+	state: number,
+	pump: number,
+	number: number,
+	header: string,
+	sid: number,
+	credit: number,
+	idcode: string,
+	qq: string,
+	weixin: string,
+	douyin: string,
+	kuaishou: string,
+	alipay: string,
+	alipay_name: string,
+	is_housekeeper: number,
+	is_fund_password: number,
+	susername: null
+}
