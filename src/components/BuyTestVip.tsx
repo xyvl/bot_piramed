@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { data } from "../data";
 import { loginRequest } from "../requests/login";
 import { buyVipFunc } from "../requests/BuyVip";
@@ -24,8 +24,8 @@ export const BuyTestVip = () => {
     }
   }, [buyVip]);
   return (
-    <>
+    <div>
       <button onClick={() => setBuyVip(0)}>Купить вип</button>
-    </>
+    </div>
   );
 };

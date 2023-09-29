@@ -1,8 +1,37 @@
-*{
+* {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
-body{
+
+body {
 	font-family: sans-serif;
+	background: #000;
+	color: white;
+}
+h1{
+	text-align: center;
+	font-size: 3em;
+}
+span{
+	font-size: 1.2em;
+	margin: 5px;
+}
+button{
+	font-size: 1.2em;
+	border: none;
+	padding: 10px;
+	margin: 10px;
+	cursor: pointer;
+	transition: all .1s;
+}
+button:hover{
+	box-shadow: 0 0 10px white;
+}
+.flex {
+	display: flex;
+}
+.flex_2{
+	display: flex;
+	justify-content: space-between;
 }
