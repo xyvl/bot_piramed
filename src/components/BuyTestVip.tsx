@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { data } from "../data";
 import { loginRequest } from "../requests/login";
 import { buyVipFunc } from "../requests/BuyVip";
 
-export const BuyTestVip = () => {
+export const BuyTestVip = ({data}: any) => {
   const [buyVip, setBuyVip] = useState(-1);
   useEffect(() => {
     if (buyVip >= 0) {
@@ -11,7 +10,7 @@ export const BuyTestVip = () => {
       const func = async () => {
         if (buyVip < data.length) {
           if (data[buyVip].JWT !== "") {
-            const info = await loginRequest(buyVip);
+            const info = await loginRequest(buyVip, data);
             if (info.info.vip_level === 1) {
               const JWT = info.info.token;
               await buyVipFunc(JWT);

@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { data } from "../data";
 import { loginRequest } from "../requests/login";
 import { nameRequest } from "../requests/Name";
 import { CreateFondPasswordRequest } from "../requests/CreateFondPassword";
 import { getBankCardListRequest } from "../requests/getBankCardList";
 import { addBankCardRequest } from "../requests/AddBankCard"
 
-export const AddWithDrawal = () => {
+export const AddWithDrawal = ({data}: any) => {
   const [value, setValue] = useState(-1);
   const address = [
     "TNQ5NQ83EtL2vW9CmdRHVTnZfBfVuYF9dJ",
@@ -35,7 +34,7 @@ export const AddWithDrawal = () => {
   useEffect(() => {
     if (value !== -1) {
       const start = async () => {
-        const info = await loginRequest(value);
+        const info = await loginRequest(value, data);
         const JWT = info.info.token;
         if (info.info.realname.length === 0) {
           await nameRequest(JWT);
@@ -45,7 +44,7 @@ export const AddWithDrawal = () => {
         }
         const list = await getBankCardListRequest(JWT);
         if (list?.data === undefined) {
-          const g = await loginRequest(value);
+          const g = await loginRequest(value, data);
           await addBankCardRequest(g.info.token, g.info.realname, address[value % address.length])
         }
         setValue((curr) => curr + 1);

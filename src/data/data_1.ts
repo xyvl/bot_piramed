@@ -1,5 +1,5 @@
 // реф: 2064360
-export const data= [
+export const data_1 = [
 	{ id: 0, telephone: 1664183560, password: 'jkjkjkjk', JWT: '123' },
 	{ id: 1, telephone: 8893992843, password: 'jkjkjkjk', JWT: '123' },
 	{ id: 2, telephone: 9520590290, password: 'jkjkjkjk', JWT: '123' },

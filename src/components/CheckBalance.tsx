@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import { data } from "../data";
 import { loginRequest } from "../requests/login";
 import { ILoginRequest } from "../type/TypeLogin";
 
 
-export const CheckBalance = () => {
+export const CheckBalance = ({data}: any) => {
   const [getAllAccountInfo, setGetAllAccountInfo] = useState<"" | any[]>("");
   const [count, setCount] = useState<number>(-1);
   useEffect(() => {
@@ -14,7 +13,7 @@ export const CheckBalance = () => {
         for (let i = 0; i < data.length; i++) {
           setCount(curr => curr + 1)
           if (data[i].JWT === "") continue;
-          const u = await loginRequest(i);
+          const u = await loginRequest(i, data);
           g.push(u);
         }
         setGetAllAccountInfo(g);

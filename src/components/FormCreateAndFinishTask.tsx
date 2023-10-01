@@ -3,10 +3,9 @@ import { firstRequest } from "../requests/First";
 import { secondRequest } from "../requests/Second";
 import { thirdRequest } from "../requests/Third";
 import { fourthRequest } from "../requests/Fourth";
-import { data } from "../data";
 import { loginRequest } from "../requests/login";
 
-export const FormCreateAndFinishTask = ({ value }: { value: number }) => {
+export const FormCreateAndFinishTask = ({ value, data }: any) => {
   const [id, setId] = useState(-1);
 
   useEffect(() => {
@@ -17,7 +16,7 @@ export const FormCreateAndFinishTask = ({ value }: { value: number }) => {
       const start = async () => {
 				while (true) {
 					console.log(id)
-          const info = await loginRequest(id);
+          const info = await loginRequest(id, data);
           const JWT = info.info.token;
           const task_id = await firstRequest(JWT);
           const [_, code_dec]: any = await secondRequest(JWT, task_id);
