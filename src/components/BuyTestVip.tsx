@@ -14,7 +14,7 @@ export const BuyTestVip = () => {
             const info = await loginRequest(buyVip);
             if (info.info.vip_level === 1) {
               const JWT = info.info.token;
-              const data = await buyVipFunc(JWT);
+              await buyVipFunc(JWT);
             }
           }
           setBuyVip((curr) => curr + 1);
@@ -25,6 +25,7 @@ export const BuyTestVip = () => {
   }, [buyVip]);
   return (
     <div>
+      {buyVip >= 0 ? <h1>{buyVip}</h1> : null}
       <button onClick={() => setBuyVip(0)}>Купить вип</button>
     </div>
   );
