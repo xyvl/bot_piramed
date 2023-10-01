@@ -11,20 +11,18 @@ export const FormCreateAndFinishTask = ({ value }: { value: number }) => {
 
   useEffect(() => {
     if (id !== -1) {
-      console.log(id);
       if(value * 25 - 1 < id){
 				return;
       }
       const start = async () => {
 				while (true) {
-					console.log("ya");
 					console.log(id)
           const info = await loginRequest(id);
           const JWT = info.info.token;
           const task_id = await firstRequest(JWT);
           const [_, code_dec]: any = await secondRequest(JWT, task_id);
           console.log(code_dec);
-          if (code_dec === "Сегодняшний номер исчерпан") {
+          if (code_dec === "Сегодняшний номер исчерпан" || code_dec === "членство истекло") {
             setId((currentValue) => currentValue + 1);
             return;
           }
@@ -32,7 +30,6 @@ export const FormCreateAndFinishTask = ({ value }: { value: number }) => {
             code_dec !== "Сегодняшний номер исчерпан" &&
             code_dec !== "операция успешна"
           ) {
-            console.log("сбой");
             continue;
           }
           const order_id = await thirdRequest(JWT);
@@ -44,7 +41,6 @@ export const FormCreateAndFinishTask = ({ value }: { value: number }) => {
 			}
     }
   }, [id]);
-  // console.log((value - 1) * 25, value * 25 - 1);
   return (
     <div style={{textAlign: "center"}}>
       {id >= 0 ? <h1>{id}</h1> : null}

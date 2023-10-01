@@ -9,7 +9,6 @@ export const CheckTask = () => {
 
   useEffect(() => {
     if (id !== -1) {
-      console.log(id);
       const start = async () => {
 				while (true) {
           const info = await loginRequest(id);
